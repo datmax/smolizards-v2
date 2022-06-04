@@ -6,12 +6,18 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        bg: "url('/lizard-bg.png')",
+        bg: "url('/bg.webp')",
       },
       colors: {
         themegreen: "#34C943",
       },
     },
   },
-  plugins: [],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    // ...
+  ],
 };
