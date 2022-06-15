@@ -19,25 +19,25 @@ const people = [
     name: "Arancino",
     role: "Co-founder",
     imageUrl: "/ara.jpg",
-    bio: "co founder with the other dummies of the team. Currently giving dumb ideas and mostly busy banning dummies from our discord/rejecting dumb collab requests on twitter.",
+    bio: "A funny living Italian stereotype who is half pizza pasta mafia half genius. So nerd his only real life friend is his cat. Also created smolizards game.",
   },
   {
     name: "Yamak",
     role: "Co-founder",
     imageUrl:
       "https://res.cloudinary.com/mazculo/image/upload/v1649351145/IMG_4316_fn0dkt.jpg",
-    bio: "A funny living Italian stereotype who is half pizza pasta mafia half genius. So nerd his only real life friend is his cat. Also created smolizards game.",
+    bio: "Co founder with the other dummies of the team. Currently giving dumb ideas and mostly busy banning dummies from our discord/rejecting dumb collab requests on twitter.",
   },
   {
     name: "Fiacchit",
-    role: "Core Founder, Discord manager",
+    role: "Co-founder, Discord manager",
     imageUrl:
       "https://res.cloudinary.com/mazculo/image/upload/v1649352189/IMG_4319_ljaghx.jpg",
     bio: "Fiacchitt:\nCo-founder, discord manager.\nI have the best ides when I'm sitting on the toilet. \nOwner of the dumb hammer and ready to time you out for a week in discord.",
   },
   {
     name: "Lucy",
-    role: "Core Founder, creative director",
+    role: "Co-founder, creative director",
     imageUrl:
       "https://res.cloudinary.com/mazculo/image/upload/v1649352195/IMG_4313_ace4ym.jpg",
     bio: "Cybersecurity engineer in the past life. A wannabe Donald Draper in web3.",

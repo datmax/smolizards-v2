@@ -1,10 +1,13 @@
 import { useState, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import { Web3Context } from "../context/web3Context";
+import { ethers } from "ethers";
+import nft from "../contracts/nft";
 
 export default function Mint() {
   const { provider, address, network, connect } = useContext(Web3Context);
   const live = false;
+  const [minting, setMinting] = useState(false);
   const changeNetwork = async () => {
     window.ethereum.request({
       method: "wallet_switchEthereumChain",
@@ -12,10 +15,16 @@ export default function Mint() {
     });
   };
 
-
-  const mint = () =>{
-
-  }
+  const mint = () => {
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(nft.address, nft.abi, signer);
+    contract.mint().then((res) => {
+      setMinting(true);
+      res.wait().then((res) => {
+        setMinting(false);
+      });
+    });
+  };
 
   return (
     <div className="min-h-screen w-full">

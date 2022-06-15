@@ -27,14 +27,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           `,
         }}
       />
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap"
+        rel="stylesheet"
+      />
       <Web3Provider>
         <Layout>
           <Component {...pageProps} />
