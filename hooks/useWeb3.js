@@ -11,7 +11,7 @@ const providerOptions = {
     package: CoinbaseWalletSDK, // Required
     options: {
       appName: 'Omg', // Required
-      infuraId: '9ed182e6c7b44c5fa80bd8c3b3779a6f',
+      infuraId: '43b50f70f77542f8ba909a4c9cfb2a94',
     },
   },
   authereum: {
@@ -20,7 +20,7 @@ const providerOptions = {
   walletconnect: {
     package: WalletConnectProvider, // required
     options: {
-      infuraId: '9ed182e6c7b44c5fa80bd8c3b3779a6f', // required
+      infuraId: '43b50f70f77542f8ba909a4c9cfb2a94', // required
     },
   },
 }

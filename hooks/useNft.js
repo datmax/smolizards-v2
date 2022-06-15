@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import React, { useState, useEffect } from 'react'
 import nft from '../contracts/nft'
-const rpc = "https://optimism-mainnet.infura.io/v3/9ed182e6c7b44c5fa80bd8c3b3779a6f"
+const rpc = "https://arbitrum-mainnet.infura.io/v3/43b50f70f77542f8ba909a4c9cfb2a94"
 export default function useNft() {
   const getMinted = async () => {
     const provider = new ethers.providers.StaticJsonRpcProvider(rpc)
