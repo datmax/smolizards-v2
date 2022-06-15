@@ -1,5 +1,5 @@
 export default {
-  address: "0x47896e5399cb1a8dc370568a152bf34c87b97f02",
+  address: "0x740086af432181f67de12f041d647101ffa506c8",
   abi: [
     {
       inputs: [
@@ -210,6 +210,17 @@ export default {
       name: "mint",
       outputs: [],
       stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [{ internalType: "address", name: "", type: "address" }],
+      name: "minters",
+      outputs: [
+        { internalType: "uint256", name: "minted_number", type: "uint256" },
+        { internalType: "bool", name: "is_whitelisted", type: "bool" },
+        { internalType: "uint256", name: "last_mint", type: "uint256" },
+      ],
+      stateMutability: "view",
       type: "function",
     },
     {
