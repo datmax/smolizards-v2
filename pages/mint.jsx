@@ -27,14 +27,17 @@ export default function Mint() {
         res
           .wait()
           .then((res) => {
+            setOpen(true);
             setMinting(false);
           })
           .catch((err) => {
             toast.error(err.message);
+            setMinting(false);
           });
       })
       .catch((err) => {
         console.error(err);
+        setMinting(false);
       });
   };
 
