@@ -20,7 +20,11 @@ const providerOptions = {
   walletconnect: {
     package: WalletConnectProvider, // required
     options: {
-      infuraId: '43b50f70f77542f8ba909a4c9cfb2a94', // required
+      infuraId: '43b50f70f77542f8ba909a4c9cfb2a94',
+      rpc: {
+        42161: "https://arbitrum-mainnet.infura.io/v3/43b50f70f77542f8ba909a4c9cfb2a94",
+        network: "Arbitrum"
+      } // required
     },
   },
 }
@@ -57,7 +61,6 @@ export default function useProvider() {
       const get = async () => {
         try {
           const web3Modal = new Web3Modal({
-            network: "10",
             
             cacheProvider: true,
             disableInjectedProvider: false,
