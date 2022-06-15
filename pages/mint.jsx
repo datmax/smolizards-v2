@@ -6,7 +6,7 @@ import nft from "../contracts/nft";
 import Modal from "../components/Modal";
 import toast, { Toaster } from "react-hot-toast";
 export default function Mint() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const { provider, address, network, connect } = useContext(Web3Context);
   const live = false;
   const [minting, setMinting] = useState(false);
@@ -20,17 +20,22 @@ export default function Mint() {
   const mint = () => {
     const signer = provider.getSigner();
     const contract = new ethers.Contract(nft.address, nft.abi, signer);
-    contract.mint().then((res) => {
-      setMinting(true);
-      res
-        .wait()
-        .then((res) => {
-          setMinting(false);
-        })
-        .catch((err) => {
-          toast.error(err.message);
-        });
-    });
+    contract
+      .mint()
+      .then((res) => {
+        setMinting(true);
+        res
+          .wait()
+          .then((res) => {
+            setMinting(false);
+          })
+          .catch((err) => {
+            toast.error(err.message);
+          });
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
 
   return (
@@ -62,11 +67,22 @@ export default function Mint() {
               )}
 
               {address && network == 42161 && (
-                <button
-                  className=" py-4 px-12 bg-purple-800 rounded-lg text-xl mt-10 hover:bg-white hover:text-purple-800"
-                  onClick={mint}>
-                  Mint
-                </button>
+                <>
+                  {minting && (
+                    <button
+                      className=" py-4 px-12 bg-purple-800 rounded-lg text-xl mt-10 hover:bg-white hover:text-purple-800"
+                      onClick={mint}>
+                      Mint
+                    </button>
+                  )}
+                  {!minting && (
+                    <button
+                      className=" py-4 px-12 bg-purple-800 rounded-lg text-xl mt-10 hover:bg-white hover:text-purple-800"
+                      onClick={mint}>
+                      Mint
+                    </button>
+                  )}
+                </>
               )}
               {address && network != 42161 && (
                 <button
@@ -77,7 +93,11 @@ export default function Mint() {
               )}
             </>
           )}
-          {!live && <div className="text-3xl">Mint is not live! Check back in a few minutes.</div>}
+          {!live && (
+            <div className="text-3xl">
+              Mint is not live! Check back in a few minutes.
+            </div>
+          )}
         </div>
       </div>
     </div>
