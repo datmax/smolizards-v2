@@ -8,7 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 export default function Mint() {
   const [open, setOpen] = useState(false);
   const { provider, address, network, connect } = useContext(Web3Context);
-  const live = false;
+  const live = true;
   const [minting, setMinting] = useState(false);
   const changeNetwork = async () => {
     window.ethereum.request({
@@ -34,7 +34,7 @@ export default function Mint() {
           });
       })
       .catch((err) => {
-        toast.error(err.message);
+        console.error(err);
       });
   };
 
