@@ -4,6 +4,8 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
+import Link from "next/link";
 import Footer from "../components/Footer";
 const item = {
   hidden: {
@@ -47,6 +49,7 @@ function classNames(...classes) {
 }
 
 export default function Layout({ children }) {
+  const router = useRouter();
   return (
     <html className="h-full">
       <body className="h-full bg-bg bg-cover">
@@ -66,20 +69,40 @@ export default function Layout({ children }) {
                   <div className="flex h-16 justify-between">
                     <div className="flex w-full">
                       <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:justify-center sm:items-center sm:justify-items-center sm:space-x-8 mx-40">
-                        {navigation.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className={classNames(
-                              item.current
-                                ? " text-themegreen"
-                                : " text-white hover:border-white hover:text-themegreen",
-                              "inline-flex items-center  px-1 pt-1 text-lg font-medium"
-                            )}
-                            aria-current={item.current ? "page" : undefined}>
-                            {item.name}
-                          </a>
-                        ))}
+                        {router.asPath == "/" && (
+                          <>
+                            {navigation.map((item) => (
+                              <a
+                                key={item.name}
+                                href={item.href}
+                                className={classNames(
+                                  item.current
+                                    ? " text-themegreen"
+                                    : " text-white hover:border-white hover:text-themegreen",
+                                  "inline-flex items-center  px-1 pt-1 text-lg font-medium"
+                                )}
+                                aria-current={
+                                  item.current ? "page" : undefined
+                                }>
+                                {item.name}
+                              </a>
+                            ))}
+                            <Link href="/mint">
+                              <a className="text-lg text-white">mint</a>
+                            </Link>
+                          </>
+                        )}
+
+                        {router.asPath != "/" && (
+                          <div className="text-white grid grid-cols-4 gap-8 text-lg ">
+                            <Link href="/">
+                              <a>Home</a>
+                            </Link>
+                            <Link href="/">
+                              <a>Mint</a>
+                            </Link>
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="hidden sm:ml-6 sm:hidden sm:items-center">
@@ -90,31 +113,33 @@ export default function Layout({ children }) {
                             <span className="sr-only">Open user menu</span>
                           </Menu.Button>
                         </div>
-                        <Transition
-                          as={Fragment}
-                          enter="transition ease-out duration-200"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95">
-                          <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md py-1 ring-1  ">
-                            {userNavigation.map((item) => (
-                              <Menu.Item key={item.name}>
-                                {({ active }) => (
-                                  <a
-                                    href={item.href}
-                                    className={classNames(
-                                      active ? "" : "",
-                                      "block px-4 py-2 text-sm text-gray-300 "
-                                    )}>
-                                    {item.name}
-                                  </a>
-                                )}
-                              </Menu.Item>
-                            ))}
-                          </Menu.Items>
-                        </Transition>
+                        {router.asPath == "/" && (
+                          <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-200"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95">
+                            <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md py-1 ring-1  ">
+                              {userNavigation.map((item) => (
+                                <Menu.Item key={item.name}>
+                                  {({ active }) => (
+                                    <a
+                                      href={item.href}
+                                      className={classNames(
+                                        active ? "" : "",
+                                        "block px-4 py-2 text-sm text-gray-300 "
+                                      )}>
+                                      {item.name}
+                                    </a>
+                                  )}
+                                </Menu.Item>
+                              ))}
+                            </Menu.Items>
+                          </Transition>
+                        )}
                       </Menu>
                     </div>
                     <div className="-mr-2  hidden items-center sm:hidden">

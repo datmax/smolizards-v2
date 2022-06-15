@@ -2,6 +2,8 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Layout from "../components/Layout";
 import Head from "next/head";
+import { Web3Provider } from "../context/web3Context";
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -13,9 +15,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Web3Provider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Web3Provider>
     </>
   );
 }

@@ -6,14 +6,20 @@
     "start": "next start"
   },
   "dependencies": {
+    "@coinbase/wallet-sdk": "^3.0.6",
     "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
+    "@walletconnect/web3-provider": "^1.7.7",
+    "authereum": "^0.1.14",
     "framer-motion": "^6.3.8",
     "next": "latest",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-hot-toast": "^2.2.0",
     "react-icons": "^4.4.0",
-    "react-intersection-observer": "^9.2.2"
+    "react-intersection-observer": "^9.2.2",
+    "walletlink": "^2.5.0",
+    "web3modal": "^1.9.7"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
