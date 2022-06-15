@@ -27,8 +27,8 @@ export default function Mint() {
         res
           .wait()
           .then((res) => {
-            setOpen(true);
             setMinting(false);
+            setOpen(true);
           })
           .catch((err) => {
             toast.error(err.message);
