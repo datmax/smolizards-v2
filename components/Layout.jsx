@@ -52,7 +52,7 @@ export default function Layout({ children }) {
   const router = useRouter();
   return (
     <html className="h-full">
-      <body className="h-full bg-bg bg-cover">
+      <body className="h-full bg-bg sm:bg-cover ">
         {/*
         This example requires updating your template:
 
@@ -68,7 +68,7 @@ export default function Layout({ children }) {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                   <div className="flex h-16 justify-between">
                     <div className="flex w-full">
-                      <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:justify-center sm:items-center sm:justify-items-center sm:space-x-8 mx-40">
+                      <div className=" sm:-my-px sm:ml-6 sm:flex sm:justify-center sm:items-center sm:justify-items-center sm:space-x-8 mx-2 sm:mx-20">
                         {router.asPath == "/" && (
                           <>
                             {navigation.map((item) => (
@@ -79,7 +79,7 @@ export default function Layout({ children }) {
                                   item.current
                                     ? " text-themegreen"
                                     : " text-white hover:border-white hover:text-themegreen",
-                                  "inline-flex items-center  px-1 pt-1 text-lg font-medium"
+                                  "inline-flex items-center  px-4 pt-4 text-lg font-medium"
                                 )}
                                 aria-current={
                                   item.current ? "page" : undefined
@@ -88,7 +88,7 @@ export default function Layout({ children }) {
                               </a>
                             ))}
                             <Link href="/mint">
-                              <a className="text-lg text-white">Mint</a>
+                              <a className="text-lg   px-4 pt-4 text-white">Mint</a>
                             </Link>
                           </>
                         )}
