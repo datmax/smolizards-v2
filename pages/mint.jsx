@@ -3,8 +3,10 @@ import { motion } from "framer-motion";
 import { Web3Context } from "../context/web3Context";
 import { ethers } from "ethers";
 import nft from "../contracts/nft";
-
+import Modal from "../components/Modal";
+import toast, { Toaster } from "react-hot-toast";
 export default function Mint() {
+  const [open, setOpen] = useState(true);
   const { provider, address, network, connect } = useContext(Web3Context);
   const live = false;
   const [minting, setMinting] = useState(false);
@@ -20,14 +22,21 @@ export default function Mint() {
     const contract = new ethers.Contract(nft.address, nft.abi, signer);
     contract.mint().then((res) => {
       setMinting(true);
-      res.wait().then((res) => {
-        setMinting(false);
-      });
+      res
+        .wait()
+        .then((res) => {
+          setMinting(false);
+        })
+        .catch((err) => {
+          toast.error(err.message);
+        });
     });
   };
 
   return (
     <div className="min-h-screen w-full">
+      <Toaster></Toaster>
+      <Modal open={open} setOpen={setOpen}></Modal>
       <h1 className="text-center text-7xl">Mint</h1>
       <div className=" w-2/3 flex justify-center mx-auto my-10 ">
         <div className="w-full justify-center mx-auto text-center text-white">
@@ -68,7 +77,7 @@ export default function Mint() {
               )}
             </>
           )}
-          {!live && <div className="text-3xl">Mint is not live!</div>}
+          {!live && <div className="text-3xl">Mint is not live! Check back in a few minutes.</div>}
         </div>
       </div>
     </div>
