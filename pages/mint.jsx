@@ -35,9 +35,9 @@ export default function Mint() {
             WL mint(free): 15/06/2022 17:00 UTC.
           </div>
           <div className="text-2xl py-2">
-            Public mint(20 $MAGIC): 17/06/2022 17:00 UTC.
+            Public mint(20 $MAGIC): 18/06/2022 17:00 UTC.
           </div>
-          <div className="text-2xl py-2">Reveal: 17/06/2022 17:00 UTC</div>
+          <div className="text-2xl py-2">Reveal: 18/06/2022 17:00 UTC</div>
           <div className="w-2/3 mx-auto border my-8"></div>
           {live && (
             <>

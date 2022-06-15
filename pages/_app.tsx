@@ -27,8 +27,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           `,
         }}
       />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link rel="preload" href="https://fonts.googleapis.com" />
+      <link rel="preload" href="https://fonts.gstatic.com" />
       <link
         href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap"
         rel="stylesheet"

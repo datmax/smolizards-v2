@@ -88,7 +88,7 @@ export default function Layout({ children }) {
                               </a>
                             ))}
                             <Link href="/mint">
-                              <a className="text-lg text-white">mint</a>
+                              <a className="text-lg text-white">Mint</a>
                             </Link>
                           </>
                         )}
