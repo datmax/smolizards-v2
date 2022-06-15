@@ -24,15 +24,18 @@ const Home: NextPage = () => {
         loop
         muted
         className=" rounded-lg"></video>
-      <div className="w-full grid grid-cols-3 justify-center py-10 gap-12">
+      <div className="w-full grid grid-cols-5 justify-center py-10 gap-12">
         <div className=" flex justify-center">
-        <motion.img whileHover={{scale:1.5}} src="/SNEEKB.png" alt="" className=" rounded-lg" />
+        <motion.img whileHover={{scale:1.5}} src="/_#1.png" alt="" className=" rounded-lg" />
         </div>
         <div className=" flex justify-center rounded-lg">
-        <motion.img whileHover={{scale:1.5}}  src="/SNEEKC.png" alt="" className=" rounded-lg" />
+        <motion.img whileHover={{scale:1.5}}  src="/AIZARD#1.png" alt="" className=" rounded-lg" />
         </div>{" "}
         <div className=" flex justify-center rounded-lg">
-          <motion.img whileHover={{scale:1.5}} src="/SNEEK1.png" alt="" className=" rounded-lg" />
+          <motion.img whileHover={{scale:1.5}} src="/BEELZIZBUB#1.png" alt="" className=" rounded-lg" />
+        </div>
+        <div className=" flex justify-center rounded-lg">
+          <motion.img whileHover={{scale:1.5}} src="/big_black#1.png" alt="" className=" rounded-lg" />
         </div>
       </div>
       <div className="w-full text-7xl text-center text-white py-10 md:py-20" id="roadmap">
@@ -60,7 +63,7 @@ const Home: NextPage = () => {
       <div className="grid grid-cols-3 pt-10 pb-10 gap-4">
         <div className="flex justify-center">
           <img
-            src="/arbitrum.svg"
+            src="https://markcubancompanies.com/wp-content/uploads/2021/05/Arbitrum_Vertical-Logo-Full-color-White-background.png"
             className="rounded-full"
             width="120"
             alt=""
