@@ -48,13 +48,9 @@ export default function Mint() {
       <h1 className="text-center text-7xl">Mint</h1>
       <div className=" w-2/3 flex justify-center mx-auto my-10 ">
         <div className="w-full justify-center mx-auto text-center text-white">
-          <div className="text-2xl py-2">
-            WL mint(free): 15/06/2022 17:00 UTC.
-          </div>
-          <div className="text-2xl py-2">
-            Public mint(20 $MAGIC): 18/06/2022 17:00 UTC.
-          </div>
-          <div className="text-2xl py-2">Reveal: 18/06/2022 17:00 UTC</div>
+          <div className="text-2xl py-2">WL mint(free): TBA</div>
+          <div className="text-2xl py-2">Public mint(20 $MAGIC): TBA</div>
+          <div className="text-2xl py-2">Reveal: TBA</div>
           <div className="w-2/3 mx-auto border my-8"></div>
           {live && (
             <>
