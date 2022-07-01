@@ -8,7 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 export default function Mint() {
   const [open, setOpen] = useState(false);
   const { provider, address, network, connect } = useContext(Web3Context);
-  const live = false;
+  const live = true;
   const [minting, setMinting] = useState(false);
   const changeNetwork = async () => {
     window.ethereum.request({
@@ -48,9 +48,11 @@ export default function Mint() {
       <h1 className="text-center text-7xl">Mint</h1>
       <div className=" w-2/3 flex justify-center mx-auto my-10 ">
         <div className="w-full justify-center mx-auto text-center text-white">
-          <div className="text-2xl py-2">WL mint(free): TBA</div>
-          <div className="text-2xl py-2">Public mint(20 $MAGIC): TBA</div>
-          <div className="text-2xl py-2">Reveal: TBA</div>
+          <div className="text-2xl py-2">WL mint(free): 01/07/2022 6PM UTC</div>
+          <div className="text-2xl py-2">
+            Public mint(20 $MAGIC): 04/07/2022 6PM UTC
+          </div>
+          <div className="text-2xl py-2">Reveal: 04/07/2022 6PM UTC</div>
           <div className="w-2/3 mx-auto border my-8"></div>
           {live && (
             <>
