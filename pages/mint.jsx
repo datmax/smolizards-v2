@@ -5,16 +5,61 @@ import { ethers } from "ethers";
 import nft from "../contracts/nft";
 import Modal from "../components/Modal";
 import toast, { Toaster } from "react-hot-toast";
+import erc20 from "../contracts/erc20";
+const magic = "0x539bde0d7dbd336b79148aa742883198bbf60342";
 export default function Mint() {
   const [open, setOpen] = useState(false);
   const { provider, address, network, connect } = useContext(Web3Context);
   const live = true;
   const [minting, setMinting] = useState(false);
+  const [approving, setApproving] = useState(false);
+  const [approved, setapproved] = useState(false);
   const changeNetwork = async () => {
     window.ethereum.request({
       method: "wallet_switchEthereumChain",
       params: [{ chainId: "0xA4B1" }],
     });
+  };
+
+  useEffect(() => {
+    if (address) {
+      const contract = new ethers.Contract(magic, erc20, provider);
+      contract.allowance(address, nft.address).then((res) => {
+        if (res / 1 > 0) {
+          setapproved(true);
+        } else {
+          setapproved(false);
+        }
+      });
+    }
+  }, [address]);
+
+  const approve = () => {
+    if (address) {
+      setApproving(true);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(magic, erc20, signer);
+      contract
+        .approve(
+          nft.address,
+          "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        )
+        .then((res) => {
+          res.wait().then((res) => {
+            toast.success("Approve successful.");
+            setApproving(false);
+            setapproved(true);
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          setApproving(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setApproving(false);
+        });
+    }
   };
 
   const mint = () => {
@@ -48,9 +93,9 @@ export default function Mint() {
       <h1 className="text-center text-7xl">Mint</h1>
       <div className=" w-2/3 flex justify-center mx-auto my-10 ">
         <div className="w-full justify-center mx-auto text-center text-white">
-          <div className="text-2xl py-2">WL mint(free): 01/07/2022 6PM UTC</div>
+          <div className="text-2xl py-2">WL mint(free): ENDED!</div>
           <div className="text-2xl py-2">
-            Public mint(20 $MAGIC): 04/07/2022 6PM UTC
+            Public mint(20 $MAGIC): LIVE!
           </div>
           <div className="w-2/3 mx-auto border my-8"></div>
           {live && (
@@ -72,14 +117,28 @@ export default function Mint() {
                     <button
                       className=" py-4 px-12 bg-purple-800 rounded-lg text-xl mt-10 hover:bg-white hover:text-purple-800"
                       onClick={mint}>
-                      Mint
+                      Minting...
                     </button>
                   )}
-                  {!minting && (
+                  {!minting && approved && (
                     <button
                       className=" py-4 px-12 bg-purple-800 rounded-lg text-xl mt-10 hover:bg-white hover:text-purple-800"
                       onClick={mint}>
                       Mint
+                    </button>
+                  )}
+                  {!minting && !approved && !approving && (
+                    <button
+                      className=" py-4 px-12 bg-purple-800 rounded-lg text-xl mt-10 hover:bg-white hover:text-purple-800"
+                      onClick={approve}>
+                      Approve
+                    </button>
+                  )}
+                  {!minting && !approved && approving && (
+                    <button
+                      className=" py-4 px-12 bg-purple-800 rounded-lg text-xl mt-10 hover:bg-white hover:text-purple-800"
+                      onClick={approve}>
+                      Approving...
                     </button>
                   )}
                 </>
