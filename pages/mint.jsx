@@ -52,7 +52,6 @@ export default function Mint() {
           <div className="text-2xl py-2">
             Public mint(20 $MAGIC): 04/07/2022 6PM UTC
           </div>
-          <div className="text-2xl py-2">Reveal: 04/07/2022 6PM UTC</div>
           <div className="w-2/3 mx-auto border my-8"></div>
           {live && (
             <>
